@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Game
  *
- * @ORM\Table(name="game")
+ * @ORM\Table(name="Game")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\GameRepository")
  */
 class Game
@@ -20,6 +20,14 @@ class Game
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+
+    /**
+     * @var User
+     *
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="games")
+     * @ORM\JoinColumn(referencedColumnName="id", name="user_id")
+     */
+    private $user;
 
     /**
      * @var string
@@ -38,14 +46,14 @@ class Game
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="createdAt", type="datetime")
+     * @ORM\Column(name="created_at", type="datetime")
      */
     private $createdAt;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="updatedAt", type="datetime")
+     * @ORM\Column(name="updated_at", type="datetime")
      */
     private $updatedAt;
 
@@ -185,6 +193,25 @@ class Game
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * @return User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param User $user
+     * @return Game
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+
+        return $this;
     }
 }
 
