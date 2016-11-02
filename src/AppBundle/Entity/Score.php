@@ -174,6 +174,7 @@ class Score
 
     /**
      * @param Game $game
+     * 
      * @return Score
      */
     public function setGame($game)
