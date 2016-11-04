@@ -1,0 +1,7 @@
+AppBundle\Entity\User:
+    example_user:
+        email: example@gmail.com
+        displayName: <username()>
+        password: password
+        createdAt: <dateTime()>
+        updatedAt: <dateTime()>

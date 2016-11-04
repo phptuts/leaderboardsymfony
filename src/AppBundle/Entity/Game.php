@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -63,6 +64,14 @@ class Game
      * @ORM\Column(name="description", type="text")
      */
     private $description;
+
+
+    /**
+     * @var ArrayCollection|Score[]
+     * 
+     * @ORM\OneToMany(targetEntity="Score", mappedBy="game")
+     */
+    private $scores;
 
 
     /**
@@ -213,5 +222,26 @@ class Game
 
         return $this;
     }
+
+    /**
+     * @return Score[]|ArrayCollection
+     */
+    public function getScores()
+    {
+        return $this->scores;
+    }
+
+    /**
+     * @param Score[]|ArrayCollection $scores
+     * @return Game
+     */
+    public function setScores($scores)
+    {
+        $this->scores = $scores;
+        
+        return $this;
+    }
+    
+    
 }
 

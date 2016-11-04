@@ -16,14 +16,17 @@ class GameController
 {
 
     /**
-     * @return array
      * @View()
+     * @return array
      */
-    public function getGamesAction() {
+    public function getGamesAction()
+    {
         $game = new Game();
         $game->setName('blue');
         $game->setDescription('description');
 
         return [$game];
     }
+    
+    
 }
