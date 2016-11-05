@@ -1,0 +1,4 @@
+services:
+    app.service.entity.game:
+        class: AppBundle\Service\Entity\GameService
+        
