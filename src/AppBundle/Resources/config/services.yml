@@ -1,6 +1,8 @@
 services:
-    app.service.entity.game:
-        class: AppBundle\Service\Entity\GameService
 
+    app.service.thirdparty.s3ClientProvider:
+        class: AppBundle\Service\ThirdParty\S3ClientProvider
+        arguments: ['%s3_region%', '%s3_secret%', '%s3_key%']
 
-    app.service.thirdparty.s3Client:
+    app.service.thirdparty.s3manager:
+        class: AppBunlde\Service\ThirdParty\S3Manager
