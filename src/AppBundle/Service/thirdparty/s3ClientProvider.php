@@ -6,7 +6,7 @@
  * Time: 10:55 PM
  */
 
-namespace AppBundle\Service\thirdparty;
+namespace AppBundle\Service\ThirdParty;
 
 use Aws\S3\S3Client; 
 
@@ -14,8 +14,10 @@ use Aws\S3\S3Client;
  * Class s3Client
  * @package AppBundle\Service\thirdparty
  */
-class S3clientProvider
+class S3ClientProvider
 {
+    const VERSION = '2006-03-01';
+
     /**
      * @var string
      */
@@ -42,9 +44,10 @@ class S3clientProvider
     {
         return new s3Client([
             'region' => $this->region,
+            'version' => self::VERSION,
             'credentials' => [
                 'secret' => $this->secret,
-                'key' => $this->key
+                'key' => $this->key,
             ]
         ]);
     }

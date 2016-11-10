@@ -6,35 +6,36 @@
  * Time: 9:33 PM
  */
 
-namespace AppBundle\Service\thirdparty;
+namespace AppBundle\Service\ThirdParty;
 
 
 use Aws\S3\S3Client;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
-class s3Manager
+class S3Manager
 {
+    /**
+     * 
+     */
+    const BUCKET = 'bigfootlocator.com';
+
     /**
      * @var S3Client
      */
     protected $client;
 
-    /**
-     * @var string
-     */
-    protected $bucket;
+    protected $env;
 
-    public function __construct(S3clientProvider $provider, $bucket)
+    public function __construct(S3ClientProvider $provider, $env)
     {
         $this->client = $provider->getClient();
-        $this->bucket = $bucket;
     }
     
     public function upload(UploadedFile $file, $key) {
         $this->client->putObject([
-            'Bucket' => $this->bucket,
+            'Bucket' => self::BUCKET,
             'SourceFile' => $file->getRealPath(),
-            'Key' => $key
+            'Key' => $this->env . '/' .$key
         ]);
     }
 

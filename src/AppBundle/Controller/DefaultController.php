@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
@@ -22,8 +23,8 @@ class DefaultController extends Controller
     /**
      * @Route("/test-upload", name="test_upload")
      */
-    public function testUploadAction()
+    public function testUploadAction(Request $request)
     {
-        
+
     }
 }
