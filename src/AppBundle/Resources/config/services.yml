@@ -1,9 +1,9 @@
 services:
 
-    app.service.thirdparty.s3ClientProvider:
+    app.service.thirdparty.s3clientprovider:
         class: AppBundle\Service\ThirdParty\S3ClientProvider
         arguments: ['%amazon_s3_region%', '%amazon_s3_secret%', '%amazon_s3_key%']
 
     app.service.thirdparty.s3manager:
         class: AppBundle\Service\ThirdParty\S3Manager
-        arguments: ['@app.service.thirdparty.s3ClientProvider', '%kernel.environment%']
+        arguments: ['@app.service.thirdparty.s3clientprovider', '%kernel.environment%']

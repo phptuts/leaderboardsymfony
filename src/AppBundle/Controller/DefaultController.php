@@ -25,6 +25,8 @@ class DefaultController extends Controller
      */
     public function testUploadAction(Request $request)
     {
-
+        $file = new UploadedFile(__DIR__ . '/logo_symfony.png', 'logo');
+        $manager = $this->get('app.service.thirdparty.s3manager');
+        $manager->upload($file, 'test1');
     }
 }
